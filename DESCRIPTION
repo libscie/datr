@@ -1,11 +1,11 @@
 Package: datr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Interface with the p2p dat network (dat API)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
+Author: Chris Hartgerink
+Maintainer: Chris Hartgerink <chris@libscie.org>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: GPLv3
 Encoding: UTF-8
 LazyData: true

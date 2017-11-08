@@ -1,14 +1,21 @@
 Package: datr
-Title: What the Package Does (one line, title case)
+Title: Interface with the Dat p2p network
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", , "first.last@example.com", c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Chris", "Hartgerink", , "chris@libscie.org", c("aut", "cre"))
+Description: The datr package provides R users with a way to interface with 
+    the Dat p2p network. Basic functionality includes cloning folders hosted on
+    the network, sharing your own files, downloading just metadata and 
+    retrieving parts of datasets. Additional functionality specific to R is 
+    likely to be implemented in due time. 
 License: GPL-3
 Depends: 
     R (>= 3.1)
 Imports: 
     rlang (>= 0.1.2),
-    magrittr
+    magrittr,
+    devtools,
+    rjson,
+    stringr
 Suggests: 
     covr,
     testthat

@@ -8,10 +8,10 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'   install_dat('dat://datr-chris.hashbase.io')
+#'   dat_install('dat://datr-chris.hashbase.io')
 #' }
 
-install_dat <- function (link) {
+dat_install <- function (link) {
   dir <- 'tmp'
   dat_clone(link, dir)
 
@@ -20,4 +20,10 @@ install_dat <- function (link) {
   unlink(dir, recursive = TRUE)
 
   message('Successfully installed package from Dat network')
+}
+
+# Install Dat using npm
+
+install_dat <- function () {
+  system('npm install -g dat')
 }

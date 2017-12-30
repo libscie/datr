@@ -67,8 +67,14 @@ verify_version <- function (x) {
   invisible(TRUE)
 }
 
-# TO DO
-verify_gateway <- function () {
+#' Verify Dat gateway
+#' 
+#' Dat links can either be 64-character hex based, or be used in conjunction
+#' with a gateway (e.g., \url{dat://datr-chris.hashbase.io} for this package)
+#' 
+#' @param x Dat gateway link to verify
+
+verify_gateway <- function (x) {
   invisible(TRUE)
 }
 

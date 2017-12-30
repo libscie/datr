@@ -11,8 +11,6 @@ License: GPL-3
 Depends: 
     R (>= 3.1)
 Imports: 
-    rlang (>= 0.1.4),
-    magrittr,
     devtools,
     rjson,
     stringr

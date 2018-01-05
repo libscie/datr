@@ -11,68 +11,24 @@ cmd_check <- function (x) {
                 'sync',
                 'log',
                 'status')) {
-    stop('Unknown Dat command. Please check the docs ?datr::dat.')
+    stop('Unknown Dat command. Please check the docs; ?datr::dat')
   }
-}
-
-#' Verify the protocol of a Dat link
-#'
-#' @param x Dat link
-#'
-#' @return Boolean TRUE [invisible]
-
-verify_protocol <- function (x) {
-  splits <- stringr::str_split(x, pattern = '://')
-  res <- lapply(splits, function (y) y[1] == 'dat')
-
-  if (!sum(res == TRUE) == length(splits)) {
-    stop('Not all supplied protocols are dat.')
-  }
-
-  invisible(TRUE)
-}
-
-#' Verify the hash of a Dat link
-#'
-#' @param x Dat link
-#'
-#' @return Boolean TRUE [invisible]
-
-verify_hash <- function (x) {
-  splits <- stringr::str_split(x, pattern = '://')
-  # Verify hash length for unversioned and versioned Dat links
-  res <- lapply(splits, function (y) {
-    nchar(y[2]) == 64 | verify_version(y[2])
-  })
-
-  if (!sum(res == TRUE) == length(splits)) {
-    stop('Not all supplied protocols are 64 character hashes.')
-  }
-
-  invisible(TRUE)
-}
-
-#' Verify a versioned Dat link
-#'
-#' @param x Dat link
-#'
-#' @return Boolean TRUE [invisible]
-
-verify_version <- function (x) {
-  splits <- stringr::str_split(x, pattern = '\\+')
-  res <- lapply(splits, function (z) {
-    nchar(z[1]) == 64 && grepl(z[2], pattern = '\\d+')
-  })
-
-  invisible(TRUE)
 }
 
 #' Verify Dat gateway
 #' 
 #' Dat links can either be 64-character hex based, or be used in conjunction
-#' with a gateway (e.g., \url{dat://datr-chris.hashbase.io} for this package)
+#' with a gateway (e.g., \url{dat://datr-chris.hashbase.io}). If a gateway is
+#' used, this function can be used to resolve the gateway to a hash for 
+#' validation.
+#' 
+#' TO BE IMPLEMENTED. Will probably require handling of the \code{dat-node}
+#' javascript implementation of Dat (see 
+#' \url{https://github.com/datproject/dat-node}). Help greatly appreciated!
 #' 
 #' @param x Dat gateway link to verify
+#' 
+#' @return Boolean TRUE [invisible]
 
 verify_gateway <- function (x) {
   invisible(TRUE)
@@ -89,12 +45,12 @@ verify_gateway <- function (x) {
 #'
 #' @return Boolean TRUE [invisible]
 
-verify_pipeline <- function (x) {
-  if (is.null(x)) {
-    stop('Please provide a Dat link.')
+verify_dat <- function (x) {
+  if (!sum(grepl(x, '^(dat:/{2})\\w{64}(\\+\\d)?$')) == length(x)) {
+    stop('Supplied Dat links contain errors. Please verify input.')
   }
-  verify_protocol(x)
-  verify_hash(x)
+  
+  invisible(TRUE)
 }
 
 #' Install node with brew on Mac

@@ -3,6 +3,8 @@
 language: R
 sudo: false
 cache: packages
+install:
+  npm install -g dat
 after_success:
   - Rscript -e 'covr::codecov()'
 

@@ -4,3 +4,7 @@
 ^\.travis\.yml$
 ^codecov\.yml$
 ^CONDUCT\.md$
+^datr-data-logo\.svg$
+^datr-data-logo\.svg\.png$
+^\.dat$
+^dat\.json$

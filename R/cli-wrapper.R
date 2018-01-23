@@ -57,12 +57,12 @@ dat_sync <- function () {
 #' }
 
 dat_clone <- function (link, dir) {
-  if (!dir.exists(dir)){
+  if (!dir.exists(dir)) {
     dir.create(dir)
   } else if (dir.exists(dir)) {
     stop('Please specify an empty or non-existent folder to prevent conflicts.')
   }
-  verify_pipeline(link)
+  verify_dat(link)
 
   system(sprintf('dat clone %s %s', link, dir))
 }
@@ -105,7 +105,7 @@ dat_pull <- function (dir = NULL) {
 
 dat_log <- function (link, dir = '.') {
   if (exists(x = 'link')) {
-    verify_pipeline(link)
+    verify_dat(link)
     cmd <- sprintf('dat log %s', link)
   } else {
     cmd <- sprintf('dat log %s', dir)

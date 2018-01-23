@@ -63,13 +63,14 @@ verify_dat <- function (x) {
 #' to install it. 
 #' 
 #' @return Nothing. Prints terminal output.
-#' @export
 
 install_node_mac <- function () {
   cmd <- '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
   tmp <- system('brew')
-  # system() returns error code 127
-  if (tmp == 127) {
+  
+  if (tmp != 1 || tmp != 0) {
+    cat('Brew not installed.\n')
+    cat('Installing from https://raw.githubusercontent.com/Homebrew/install/master/install.\n')
     system(cmd)
   }
 
@@ -87,13 +88,17 @@ install_node_mac <- function () {
 #' Chocolatey.
 #' 
 #' @return Nothing. Prints terminal output.
-#' @export
 
 install_node_windows <- function () {
   cmd <- '@"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString(\'https://chocolatey.org/install.ps1\'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin"'
+  tmp <- system('choco')
+  
+  if (tmp != 1 || tmp != 0) {
+    cat('Chocolatey package manager not installed.\n')
+    cat('Installing from https://chocolatey.org/install.ps1.\n')
+    system(cmd)
+  }
 
-  tryCatch(system('choco'), 
-    finally = system(cmd))
   system('choco install nodejs')
 }
 
@@ -112,13 +117,9 @@ install_node_windows <- function () {
 #'   at own discretion.
 #' 
 #' @return Nothing. Prints terminal output.
-#' @export
 
 install_node_linux <- function (pkg = 'apt') {
-  cmd <- sprintf('sudo %s install nodejs', pkg)
-  system(cmd)
-  # Command to ensure npm install doesn't need sudo
-  system('echo export NODE_PATH=~/.npm-global/lib/node_modules/ >> .profile')
+  system(sprintf('sudo %s install nodejs', pkg))
 }
 
 #' Wrap node install functions across OS
@@ -129,17 +130,28 @@ install_node_linux <- function (pkg = 'apt') {
 #' @return Nothing. Prints terminal output.
 
 install_node <- function(os, pkg) {
-  if (os == 'mac') {
+  if (os == 'mac' && !npm_avail) {
     install_node_mac()
-  } else if (os == 'windows') {
+  } else if (os == 'windows' && !npm_avail) {
     install_node_windows()
-  } else if (os == 'linux') {
+  } else if (os == 'linux' && !npm_avail) {
     install_node_linux(pkg = pkg)
   } else {
     stop('Unexpected error. Please post an issue to github.com/libscie/datr
       with your sessionInfo() output and error log (thanks!).')
   }
 }
+
+#' Helper function for npm availability
+#' 
+#' @return TRUE if available.
+
+npm_avail <- function () {
+  x <- system('npm -v')
+  if (x == 1 || x == 0) {
+    return(TRUE)
+  }
+} 
 
 # To do
 update_npm <- function () {}

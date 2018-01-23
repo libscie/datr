@@ -34,12 +34,11 @@ verify_gateway <- function (x) {
   invisible(TRUE)
 }
 
-#' Verify Dat link on various aspects
+#' Verify Dat link
 #'
-#' This function provides a wrapper for the various aspects of a Dat link
-#' such as the protocol (\code{\link{verify_protocol}}), the hash
-#' (\code{\link{verify_hash}}) and the gateway (\code{\link{verify_gateway}};
-#' not yet implemented).
+#' This function verifies a Dat link with a heuristic, checking for a 64 
+#' character hash plus an optional version number. Resolving gateways such
+#' as \url{https://hashbase.io} will be implemented later.
 #'
 #' @param x Dat link to verify.
 #'
@@ -130,11 +129,11 @@ install_node_linux <- function (pkg = 'apt') {
 #' @return Nothing. Prints terminal output.
 
 install_node <- function(os, pkg) {
-  if (os == 'mac' && !npm_avail) {
+  if (os == 'mac' && !npm_avail()) {
     install_node_mac()
-  } else if (os == 'windows' && !npm_avail) {
+  } else if (os == 'windows' && !npm_avail()) {
     install_node_windows()
-  } else if (os == 'linux' && !npm_avail) {
+  } else if (os == 'linux' && !npm_avail()) {
     install_node_linux(pkg = pkg)
   } else {
     stop('Unexpected error. Please post an issue to github.com/libscie/datr
@@ -169,7 +168,8 @@ update_npm <- function () {}
 #' @export
 
 install_dat <- function (os = 'windows', pkg = 'apt') {
-  tryCatch(system('npm -v'), 
-    finally = install_node(os, pkg))
+  if (!npm_avail()) {
+    install_node(os, pkg)
+  }
   system('npm install -g dat')
 }

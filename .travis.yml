@@ -3,6 +3,12 @@
 language: R
 sudo: false
 cache: packages
+install:
+  npm install -g dat;
+  R -e 'install.packages("devtools")';
+  R -e 'install.packages("rjson")';
+  R -e 'install.packages("covr")';
+  R -e 'install.packages("testthat")';
 after_success:
   - Rscript -e 'covr::codecov()'
 

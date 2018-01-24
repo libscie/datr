@@ -9,7 +9,17 @@ verify_gateway(x)
 \arguments{
 \item{x}{Dat gateway link to verify}
 }
+\value{
+Boolean TRUE [invisible]
+}
 \description{
 Dat links can either be 64-character hex based, or be used in conjunction
-with a gateway (e.g., \url{dat://datr-chris.hashbase.io} for this package)
+with a gateway (e.g., \url{dat://datr-chris.hashbase.io}). If a gateway is
+used, this function can be used to resolve the gateway to a hash for 
+validation.
+}
+\details{
+TO BE IMPLEMENTED. Will probably require handling of the \code{dat-node}
+javascript implementation of Dat (see 
+\url{https://github.com/datproject/dat-node}). Help greatly appreciated!
 }

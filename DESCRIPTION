@@ -13,7 +13,6 @@ Depends:
 Imports: 
     devtools,
     rjson,
-    stringr
 Suggests: 
     covr,
     testthat

@@ -59,9 +59,8 @@ dat_sync <- function () {
 dat_clone <- function (link, dir) {
   if (!dir.exists(dir)) {
     dir.create(dir)
-  } else if (dir.exists(dir)) {
-    stop('Please specify an empty or non-existent folder to prevent conflicts.')
   }
+  
   verify_dat(link)
 
   system(sprintf('dat clone %s %s', link, dir))

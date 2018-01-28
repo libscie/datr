@@ -45,7 +45,7 @@ verify_gateway <- function (x) {
 #' @return Boolean TRUE [invisible]
 
 verify_dat <- function (x) {
-  if (!sum(grepl(x, '^(dat:/{2})\\w{64}(\\+\\d)?$')) == length(x)) {
+  if (!sum(grepl(x, pattern = '^(dat:/{2})\\w{64}(\\+\\d)?$')) == length(x)) {
     stop('Supplied Dat links contain errors. Please verify input.')
   }
   

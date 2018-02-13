@@ -7,7 +7,7 @@
 #'
 #' @export
 
-dat_share <- function () {
+share_dat <- function () {
   if (dir.exists('.dat')) {
     stop('Dat already initialized.')
   }
@@ -22,7 +22,7 @@ dat_share <- function () {
 #' @return Dat link
 #' @export
 
-dat_create <- function () {
+create_dat <- function () {
   system('dat create')
 
   res <- rjson::fromJSON(file = './dat.json')$url
@@ -32,12 +32,12 @@ dat_create <- function () {
 #' Synchronize current folder with Dat network
 #'
 #' Function to resume sharing the folder with the Dat network, if already
-#' created (\code{\link{dat_create}}) locally or cloned
-#' (\code{\link{dat_clone}}).
+#' created (\code{\link{create_dat}}) locally or cloned
+#' (\code{\link{clone_dat}}).
 #'
 #' @export
 
-dat_sync <- function () {
+sync_dat <- function () {
   system('dat sync')
 }
 
@@ -52,11 +52,11 @@ dat_sync <- function () {
 #' @export
 #'
 #' @examples \dontrun{
-#'   dat_clone(link = 'dat://a1b2c3...)
-#'   dat_clone(link = 'dat://a1b2c3...+34)
+#'   clone_dat(link = 'dat://a1b2c3...)
+#'   clone_dat(link = 'dat://a1b2c3...+34)
 #' }
 
-dat_clone <- function (link, dir) {
+clone_dat <- function (link, dir) {
   if (!dir.exists(dir)) {
     dir.create(dir)
   }
@@ -81,7 +81,7 @@ dat_clone <- function (link, dir) {
 #' @return Nothing (for now)
 #' @export
 
-dat_pull <- function (dir = NULL) {
+pull_dat <- function (dir = NULL) {
   if (is.null(dir)) {
     system('dat pull')
   } else {
@@ -102,7 +102,7 @@ dat_pull <- function (dir = NULL) {
 #' @return Nothing (for now)
 #' @export
 
-dat_log <- function (link, dir = '.') {
+log_dat <- function (link, dir = '.') {
   if (exists(x = 'link')) {
     verify_dat(link)
     cmd <- sprintf('dat log %s', link)
@@ -123,6 +123,6 @@ dat_log <- function (link, dir = '.') {
 #' @return Nothing (for now)
 #' @export
 
-dat_status <- function (dir = '.') {
+status_dat <- function (dir = '.') {
   system('dat status')
 }

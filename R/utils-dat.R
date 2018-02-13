@@ -44,7 +44,7 @@ verify_gateway <- function (x) {
 #'
 #' @return Boolean TRUE [invisible]
 
-verify_dat <- function (x) {
+dat_verify <- function (x) {
   if (!sum(grepl(x, pattern = '^(dat:/{2})\\w{64}(\\+\\d)?$')) == length(x)) {
     stop('Supplied Dat links contain errors. Please verify input.')
   }
@@ -109,7 +109,7 @@ install_node_windows <- function () {
 #' \code{dnf} [Redhat based]), this function installs node. 
 #' 
 #' In order to ensure sudo is not needed to install with \code{npm} in 
-#' \code{install_dat()}, the NODE_PATH is exported into the user's .profile
+#' \code{dat_install()}, the NODE_PATH is exported into the user's .profile
 #' 
 #' @param pkg Package manager of Linux distro (typically \code{apt} or 
 #'   \code{dnf}). No checks for type of manager at the moment, so adjust
@@ -169,7 +169,7 @@ update_npm <- function () {}
 #' @return NULL. Prints stdout of terminal along the way.
 #' @export
 
-install_dat <- function (os = 'windows', pkg = 'apt') {
+dat_install <- function (os = 'windows', pkg = 'apt') {
   if (!npm_avail()) {
     install_node(os, pkg)
   }

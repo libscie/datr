@@ -44,7 +44,7 @@ verify_gateway <- function (x) {
 #'
 #' @return Boolean TRUE [invisible]
 
-dat_verify <- function (x) {
+verify_dat <- function (x) {
   if (!sum(grepl(x, pattern = '^(dat:/{2})\\w{64}(\\+\\d)?$')) == length(x)) {
     stop('Supplied Dat links contain errors. Please verify input.')
   }
@@ -52,126 +52,37 @@ dat_verify <- function (x) {
   invisible(TRUE)
 }
 
-#' Install node with brew on Mac
+#' Install Dat
 #' 
-#' In order to install Dat, npm needs to be available on the system call. 
-#' This becomes available when nodeJS (\url{https://nodejs.org}) is available.
-#' Using Brew (\url{https://brew.sh/}), this function installs node. 
+#' Download the released binaries for Dat and add them to your environment. If
+#' a more recent version has been released, you can specify it as argument (we
+#' try to update it accordingly, but might sometimes have time off!).
 #' 
-#' The function wraps a system call that gets an install script and uses Ruby
-#' to install it. 
-#' 
-#' @return Nothing. Prints terminal output.
-
-install_node_mac <- function () {
-  cmd <- '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-  tmp <- system('brew')
-  
-  if (tmp != 1 || tmp != 0) {
-    cat('Brew not installed.\n')
-    cat('Installing from https://raw.githubusercontent.com/Homebrew/install/master/install.\n')
-    system(cmd)
-  }
-
-  system('brew node')
-}
-
-#' Install node with Chocolatey on windows
-#' 
-#' In order to install Dat, npm needs to be available on the system call. 
-#' This becomes available when nodeJS (\url{https://nodejs.org}) is available.
-#' Using Chocolatey (\url{https://chocolatey.org/}), this function installs 
-#' node. 
-#' 
-#' The function wraps a system call that gets the install script from
-#' Chocolatey.
-#' 
-#' @return Nothing. Prints terminal output.
-
-install_node_windows <- function () {
-  cmd <- '@"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString(\'https://chocolatey.org/install.ps1\'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin"'
-  tmp <- system('choco')
-  
-  if (tmp != 1 || tmp != 0) {
-    cat('Chocolatey package manager not installed.\n')
-    cat('Installing from https://chocolatey.org/install.ps1.\n')
-    system(cmd)
-  }
-
-  system('choco install nodejs')
-}
-
-#' Install node on Linux
-#' 
-#' In order to install Dat, npm needs to be available on the system call. 
-#' This becomes available when nodeJS (\url{https://nodejs.org}) is available.
-#' Using the specified package manager (usually \code{apt} [Debian based] or
-#' \code{dnf} [Redhat based]), this function installs node. 
-#' 
-#' In order to ensure sudo is not needed to install with \code{npm} in 
-#' \code{dat_install()}, the NODE_PATH is exported into the user's .profile
-#' 
-#' @param pkg Package manager of Linux distro (typically \code{apt} or 
-#'   \code{dnf}). No checks for type of manager at the moment, so adjust
-#'   at own discretion.
-#' 
-#' @return Nothing. Prints terminal output.
-
-install_node_linux <- function (pkg = 'apt') {
-  system(sprintf('sudo %s install nodejs', pkg))
-}
-
-#' Wrap node install functions across OS
-#' 
-#' @param os 'windows', 'mac', or 'linux'
-#' @param pkg Package manager [only for 'linux']
-#' 
-#' @return Nothing. Prints terminal output.
-
-install_node <- function(os, pkg) {
-  if (os == 'mac' && !npm_avail()) {
-    install_node_mac()
-  } else if (os == 'windows' && !npm_avail()) {
-    install_node_windows()
-  } else if (os == 'linux' && !npm_avail()) {
-    install_node_linux(pkg = pkg)
-  } else {
-    stop('Please ensure os is \'mac\', \'linux\', or \'windows\'. 
-      If it is, please post an issue to github.com/libscie/datr
-      with your sessionInfo() output and error log (thanks!).')
-  }
-}
-
-#' Helper function for npm availability
-#' 
-#' @return TRUE if available, FALSE if not.
-
-npm_avail <- function () {
-  x <- system('npm -v')
-  if (x == 1 || x == 0) {
-    return(TRUE)
-  }
-  return(FALSE)
-} 
-
-# To do
-update_npm <- function () {}
-
-#' Install Dat from npm
-#' 
-#' Directly install Dat from npm. If node + npm are not yet available, the 
-#' function will first try to install these. NOTE: at the moment the
-#' install_node_mac() and install_node_windows() functions have not been tested (TBD).
-#' 
-#' @param os 'windows', 'mac', or 'linux'
-#' @param pkg Package manager (only for linux; typically 'apt' or 'dnf')
+#' @param os 'win' (Windows), 'mac', or 'linux'
+#' @param ver Version. See \url{https://github.com/datproject/dat/releases}
 #' 
 #' @return NULL. Prints stdout of terminal along the way.
+#' @importFrom utils download.file
+#' @importFrom utils unzip
 #' @export
 
-dat_install <- function (os = 'windows', pkg = 'apt') {
-  if (!npm_avail()) {
-    install_node(os, pkg)
+dat_install <- function (os = 'win', ver = '13.10.0') {
+  if (os == 'win' || os == 'mac' || os == 'linux') {
+    stop('Please specify operating system correctly.')
   }
-  system('npm install -g dat')
+
+  url <- sprintf('https://github.com/datproject/dat/releases/download/v%s/dat-%s-%s-x64.zip',
+    ver, ver, os)
+  download.file(url, destfile = 'dat.zip')
+
+  unzip('dat.zip', exdir = sprintf('%s/.datr/', normalizePath('~')))
+  file.remove('dat.zip')
+
+  if (os == 'win') {
+    system(paste0('SETX /M PATH "%PATH%;', normalizePath('~/.datr'), '"'))
+  } else {
+    system("echo 'export PATH=$PATH:/home/$USER/.datr' >> ~/.profile")
+  }
+
+  cat('Successfully installed Dat.')
 }

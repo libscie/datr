@@ -88,6 +88,4 @@ dat_install <- function (os = 'win', ver = '13.10.0') {
   } else {
     system(sprintf("echo 'export PATH=$PATH:/home/$USER/.datr/dat-%s-%s-x64' >> ~/.profile", ver, os))
   }
-
-  cat('Successfully installed Dat.\n')
 }

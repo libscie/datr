@@ -70,13 +70,15 @@ dat_install <- function (os = 'win', ver = '13.10.0') {
   if (!(os == 'win' || os == 'mac' || os == 'linux')) {
     stop('Please specify operating system correctly.')
   }
+  
+  dir.create(normalizePath('~/.datr'))
 
   url <- sprintf('https://github.com/datproject/dat/releases/download/v%s/dat-%s-%s-x64.zip',
     ver, ver, os)
-  download.file(url, destfile = 'dat.zip')
+  download.file(url, destfile = normalizePath('~/.datr/dat.zip'))
 
   unzip('dat.zip', exdir = sprintf('%s/.datr/', normalizePath('~')))
-  file.remove('dat.zip')
+  file.remove(normalizePath('~/.datr/dat.zip'))
 
   if (os == 'win') {
     system(paste0('SETX /M PATH "%PATH%;', normalizePath('~/.datr'), '"'))

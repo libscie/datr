@@ -71,20 +71,23 @@ dat_install <- function (os = 'win', ver = '13.10.0') {
     stop('Please specify operating system correctly.')
   }
   
-  dir.create(normalizePath('~/.datr'))
+  dir.create(normalizePath('~/.datr', winslash = '\\'))
 
   url <- sprintf('https://github.com/datproject/dat/releases/download/v%s/dat-%s-%s-x64.zip',
     ver, ver, os)
-  download.file(url, destfile = normalizePath('~/.datr/dat.zip'))
+  download.file(url,
+   destfile = 'dat.zip')
 
-  unzip('dat.zip', exdir = sprintf('%s/.datr/', normalizePath('~')))
-  file.remove(normalizePath('~/.datr/dat.zip'))
+  unzip('dat.zip', exdir = normalizePath('~/.datr', winslash = '\\'))
+  file.remove('dat.zip')
 
   if (os == 'win') {
-    system(paste0('SETX /M PATH "%PATH%;', normalizePath('~/.datr'), '"'))
+    system(paste0('SETX /M PATH "%PATH%;',
+     normalizePath(sprintf('~/.datr/dat-%s-%s-x64', ver, os),
+      winslash = '\\'), '"'))
   } else {
-    system("echo 'export PATH=$PATH:/home/$USER/.datr' >> ~/.profile")
+    system(sprintf("echo 'export PATH=$PATH:/home/$USER/.datr/dat-%s-%s-x64' >> ~/.profile", ver, os))
   }
 
-  cat('Successfully installed Dat.')
+  cat('Successfully installed Dat.\n')
 }

@@ -144,13 +144,14 @@ install_node <- function(os, pkg) {
 
 #' Helper function for npm availability
 #' 
-#' @return TRUE if available.
+#' @return TRUE if available, FALSE if not.
 
 npm_avail <- function () {
   x <- system('npm -v')
   if (x == 1 || x == 0) {
     return(TRUE)
   }
+  return(FALSE)
 } 
 
 # To do

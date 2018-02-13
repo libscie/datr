@@ -136,7 +136,8 @@ install_node <- function(os, pkg) {
   } else if (os == 'linux' && !npm_avail()) {
     install_node_linux(pkg = pkg)
   } else {
-    stop('Unexpected error. Please post an issue to github.com/libscie/datr
+    stop('Please ensure os is \'mac\', \'linux\', or \'windows\'. 
+      If it is, please post an issue to github.com/libscie/datr
       with your sessionInfo() output and error log (thanks!).')
   }
 }

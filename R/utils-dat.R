@@ -67,7 +67,7 @@ verify_dat <- function (x) {
 #' @export
 
 dat_install <- function (os = 'win', ver = '13.10.0') {
-  if (!(os == 'win' || os == 'mac' || os == 'linux')) {
+  if (!(os == 'win' || os == 'macos' || os == 'linux')) {
     stop('Please specify operating system correctly.')
   }
   

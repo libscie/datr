@@ -11,82 +11,81 @@ cmd_check <- function (x) {
                 'sync',
                 'log',
                 'status')) {
-    stop('Unknown Dat command. Please check the docs ?datr::dat.')
+    stop('Unknown Dat command. Please check the docs; ?datr::dat')
   }
 }
 
-#' Verify the protocol of a Dat link
-#'
-#' @param x Dat link
-#'
+#' Verify Dat gateway
+#' 
+#' Dat links can either be 64-character hex based, or be used in conjunction
+#' with a gateway (e.g., \url{dat://datr-chris.hashbase.io}). If a gateway is
+#' used, this function can be used to resolve the gateway to a hash for 
+#' validation.
+#' 
+#' TO BE IMPLEMENTED. Will probably require handling of the \code{dat-node}
+#' javascript implementation of Dat (see 
+#' \url{https://github.com/datproject/dat-node}). Help greatly appreciated!
+#' 
+#' @param x Dat gateway link to verify
+#' 
 #' @return Boolean TRUE [invisible]
 
-verify_protocol <- function (x) {
-  splits <- stringr::str_split(x, pattern = '://')
-  res <- lapply(splits, function (y) y[1] == 'dat')
-
-  if (!sum(res == TRUE) == length(splits)) {
-    stop('Not all supplied protocols are dat.')
-  }
-
+verify_gateway <- function (x) {
   invisible(TRUE)
 }
 
-#' Verify the hash of a Dat link
+#' Verify Dat link
 #'
-#' @param x Dat link
-#'
-#' @return Boolean TRUE [invisible]
-
-verify_hash <- function (x) {
-  splits <- stringr::str_split(x, pattern = '://')
-  # Verify hash length for unversioned and versioned Dat links
-  res <- lapply(splits, function (y) {
-    nchar(y[2]) == 64 | verify_version(y[2])
-  })
-
-  if (!sum(res == TRUE) == length(splits)) {
-    stop('Not all supplied protocols are 64 character hashes.')
-  }
-
-  invisible(TRUE)
-}
-
-#' Verify a versioned Dat link
-#'
-#' @param x Dat link
-#'
-#' @return Boolean TRUE [invisible]
-
-verify_version <- function (x) {
-  splits <- stringr::str_split(x, pattern = '\\+')
-  res <- lapply(splits, function (z) {
-    nchar(z[1]) == 64 && grepl(z[2], pattern = '\\d+')
-  })
-
-  invisible(TRUE)
-}
-
-# TO DO
-verify_gateway <- function () {
-  invisible(TRUE)
-}
-
-#' Verify Dat link on various aspects
-#'
-#' This function provides a wrapper for the various aspects of a Dat link
-#' such as the protocol (\code{\link{verify_protocol}}), the hash
-#' (\code{\link{verify_hash}}) and the gateway (\code{\link{verify_gateway}};
-#' not yet implemented).
+#' This function verifies a Dat link with a heuristic, checking for a 64 
+#' character hash plus an optional version number. Resolving gateways such
+#' as \url{https://hashbase.io} will be implemented later.
 #'
 #' @param x Dat link to verify.
 #'
 #' @return Boolean TRUE [invisible]
 
-verify_pipeline <- function (x) {
-  if (is.null(x)) {
-    stop('Please provide a Dat link.')
+verify_dat <- function (x) {
+  if (!sum(grepl(x, pattern = '^(dat:/{2})\\w{64}(\\+\\d)?$')) == length(x)) {
+    stop('Supplied Dat links contain errors. Please verify input.')
   }
-  verify_protocol(x)
-  verify_hash(x)
+  
+  invisible(TRUE)
+}
+
+#' Install Dat
+#' 
+#' Download the released binaries for Dat and add them to your environment. If
+#' a more recent version has been released, you can specify it as argument (we
+#' try to update it accordingly, but might sometimes have time off!).
+#' 
+#' @param os 'win' (Windows), 'mac', or 'linux'
+#' @param ver Version. See \url{https://github.com/datproject/dat/releases}
+#' 
+#' @return NULL. Prints stdout of terminal along the way.
+#' @importFrom utils download.file
+#' @importFrom utils unzip
+#' @export
+
+dat_install <- function (os = 'win', ver = '13.10.0') {
+  if (!(os == 'win' || os == 'macos' || os == 'linux')) {
+    stop('Please specify operating system correctly.')
+  }
+  
+  dir.create(normalizePath('~/.datr', winslash = '\\'))
+
+  url <- sprintf('https://github.com/datproject/dat/releases/download/v%s/dat-%s-%s-x64.zip',
+    ver, ver, os)
+  download.file(url,
+   destfile = 'dat.zip')
+
+  unzip('dat.zip', exdir = normalizePath('~/.datr', winslash = '\\'))
+  file.remove('dat.zip')
+
+  if (os == 'win') {
+    system(paste0('SETX /M PATH "%PATH%;',
+     normalizePath(sprintf('~/.datr/dat-%s-%s-x64', ver, os),
+      winslash = '\\'), '"'))
+  } else {
+    system(sprintf("echo 'export PATH=$PATH:/home/$USER/.datr/dat-%s-%s-x64' >> ~/.profile", ver, os))
+  }
 }

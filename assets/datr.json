@@ -1,0 +1,270 @@
+{
+  "version": 1,
+  "width": 140,
+  "height": 32,
+  "duration": 26.968774,
+  "command": null,
+  "title": null,
+  "env": {
+    "TERM": "xterm-256color",
+    "SHELL": "/bin/bash"
+  },
+  "stdout": [
+    [
+      0.071185,
+      "\u001b]777;notify;Command completed;R\u0007\u001b]0;chjh@localhost:~\u0007\u001b]7;file://localhost.localdomain/home/chjh\u0007"
+    ],
+    [
+      7.3e-05,
+      "[chjh@localhost ~]$ "
+    ],
+    [
+      0.459354,
+      "R"
+    ],
+    [
+      0.657259,
+      "\r\n"
+    ],
+    [
+      0.090587,
+      "\r\nR version 3.4.3 (2017-11-30) -- \"Kite-Eating Tree\"\r\nCopyright (C) 2017 The R Foundation for Statistical Computing\r\nPlatform: x86_64-redhat-linux-gnu (64-bit)\r\n\r\n"
+    ],
+    [
+      4.6e-05,
+      "R is free software and comes with ABSOLUTELY NO WARRANTY.\r\nYou are welcome to redistribute it under certain conditions.\r\nType 'license()' or 'licence()' for distribution details.\r\n\r\n"
+    ],
+    [
+      0.00018,
+      "  Natural language support but running in an English locale\r\n\r\nR is a collaborative project with many contributors.\r\nType 'contributors()' for more information and\r\n'citation()' on how to cite R or R packages in publications.\r\n\r\nType 'demo()' for some demos, 'help()' for on-line help, or\r\n'help.start()' for an HTML browser interface to help.\r\nType 'q()' to quit R.\r\n\r\n"
+    ],
+    [
+      0.07437,
+      "> "
+    ],
+    [
+      1.034551,
+      "d"
+    ],
+    [
+      0.062521,
+      "e"
+    ],
+    [
+      0.163486,
+      "v"
+    ],
+    [
+      0.172205,
+      "t"
+    ],
+    [
+      0.063507,
+      "o"
+    ],
+    [
+      0.138788,
+      "o"
+    ],
+    [
+      0.135923,
+      "l"
+    ],
+    [
+      0.119734,
+      "s"
+    ],
+    [
+      0.144531,
+      ":"
+    ],
+    [
+      0.134009,
+      ":"
+    ],
+    [
+      0.218364,
+      "i"
+    ],
+    [
+      0.086468,
+      "n"
+    ],
+    [
+      0.068855,
+      "s"
+    ],
+    [
+      0.070384,
+      "t"
+    ],
+    [
+      0.076514,
+      "a"
+    ],
+    [
+      0.088938,
+      "l"
+    ],
+    [
+      0.12868,
+      "l"
+    ],
+    [
+      0.191519,
+      "_"
+    ],
+    [
+      0.194972,
+      "g"
+    ],
+    [
+      0.119776,
+      "i"
+    ],
+    [
+      0.120628,
+      "t"
+    ],
+    [
+      0.123712,
+      "h"
+    ],
+    [
+      0.098604,
+      "u"
+    ],
+    [
+      0.132299,
+      "b"
+    ],
+    [
+      0.24306,
+      "("
+    ],
+    [
+      0.281312,
+      "'"
+    ],
+    [
+      0.474698,
+      "l"
+    ],
+    [
+      0.074918,
+      "i"
+    ],
+    [
+      0.076939,
+      "b"
+    ],
+    [
+      0.117126,
+      "s"
+    ],
+    [
+      0.047576,
+      "c"
+    ],
+    [
+      0.116641,
+      "i"
+    ],
+    [
+      0.150646,
+      "e"
+    ],
+    [
+      0.254012,
+      "/"
+    ],
+    [
+      0.11446,
+      "d"
+    ],
+    [
+      0.110237,
+      "a"
+    ],
+    [
+      0.11464,
+      "t"
+    ],
+    [
+      0.086142,
+      "r"
+    ],
+    [
+      0.499206,
+      "'"
+    ],
+    [
+      1.004486,
+      ")"
+    ],
+    [
+      0.327517,
+      "\r\n"
+    ],
+    [
+      2.929392,
+      "Downloading GitHub repo libscie/datr@master\r\nfrom URL https://api.github.com/repos/libscie/datr/zipball/master\r\n"
+    ],
+    [
+      1.964965,
+      "Installing datr\r\n"
+    ],
+    [
+      5.28667,
+      "Downloading GitHub repo hadley/devtools@master\r\nfrom URL https://api.github.com/repos/hadley/devtools/zipball/master\r\n"
+    ],
+    [
+      1.349696,
+      "Installing devtools\r\n"
+    ],
+    [
+      3.38547,
+      "^C"
+    ],
+    [
+      0.58783,
+      "^Z"
+    ],
+    [
+      6.3e-05,
+      "\r\n"
+    ],
+    [
+      5.2e-05,
+      "[1]+  Stopped                 R\r\n"
+    ],
+    [
+      0.010166,
+      "\u001b]777;notify;Command completed;R\u0007\u001b]0;chjh@localhost:~\u0007\u001b]7;file://localhost.localdomain/home/chjh\u0007"
+    ],
+    [
+      8.2e-05,
+      "[chjh@localhost ~]$ "
+    ],
+    [
+      0.666222,
+      "exit\r\nThere are stopped jobs.\r\n"
+    ],
+    [
+      0.009949,
+      "\u001b]777;notify;Command completed;R\u0007\u001b]0;chjh@localhost:~\u0007\u001b]7;file://localhost.localdomain/home/chjh\u0007"
+    ],
+    [
+      8.4e-05,
+      "[chjh@localhost ~]$ "
+    ],
+    [
+      1.074179,
+      "R"
+    ],
+    [
+      0.367794,
+      "\b\u001b[K"
+    ]
+  ]
+}

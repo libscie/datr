@@ -71,7 +71,7 @@ dat_install <- function (os = 'win', ver = '13.10.0') {
     stop('Please specify operating system correctly.')
   }
   
-  dir.create(normalizePath('~/.datr', winslash = '\\'))
+  suppressWarnings(dir.create(normalizePath('~/.datr', winslash = '\\')))
 
   url <- sprintf('https://github.com/datproject/dat/releases/download/v%s/dat-%s-%s-x64.zip',
     ver, ver, os)

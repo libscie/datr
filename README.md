@@ -1,4 +1,4 @@
-<div align="center"><img src="https://raw.githubusercontent.com/libscie/datr/master/assets/datr-data-logo.svg.png" width="100%" /></div>
+<div align="center"><img src="https://raw.githubusercontent.com/libscie/datr/master/assets/datr-data-logo.svg.png" width="33%" /></div>
 
 <p align="center">
   <!-- Stability -->

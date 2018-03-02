@@ -15,25 +15,6 @@ cmd_check <- function (x) {
   }
 }
 
-#' Verify Dat gateway
-#' 
-#' Dat links can either be 64-character hex based, or be used in conjunction
-#' with a gateway (e.g., \url{dat://datr-chris.hashbase.io}). If a gateway is
-#' used, this function can be used to resolve the gateway to a hash for 
-#' validation.
-#' 
-#' TO BE IMPLEMENTED. Will probably require handling of the \code{dat-node}
-#' javascript implementation of Dat (see 
-#' \url{https://github.com/datproject/dat-node}). Help greatly appreciated!
-#' 
-#' @param x Dat gateway link to verify
-#' 
-#' @return Boolean TRUE [invisible]
-
-verify_gateway <- function (x) {
-  invisible(TRUE)
-}
-
 #' Verify Dat link
 #'
 #' This function verifies a Dat link with a heuristic, checking for a 64 

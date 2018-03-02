@@ -3,3 +3,5 @@
 .dat/
 .profile
 *.swp
+R/scratchpad.R
+.scratchpad/

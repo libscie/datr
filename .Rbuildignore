@@ -8,3 +8,12 @@
 ^datr-data-logo\.svg\.png$
 ^\.dat$
 ^dat\.json$
+^assets$
+^revdep$
+^\.Rhistory$
+^CRAN-COMMENTS\.md$
+^\.gitignore$
+^CODE_OF_CONDUCT\.md$
+^LICENSE_CONTENT\.md$
+^R/scratchpad\.R$
+^\.scratchpad$

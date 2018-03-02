@@ -1,47 +1,28 @@
-[![datr logo](assets/datr-data-logo.svg.png)](https://github.com/datproject/design)
+<div align="center"><img src="https://raw.githubusercontent.com/libscie/datr/master/assets/datr-data-logo.svg.png" width="100%" /></div>
 
-[![Build Status](https://travis-ci.org/libscie/datr.svg?branch=master)](https://travis-ci.org/libscie/datr)
-[![Coverage status](https://codecov.io/gh/libscie/datr/branch/master/graph/badge.svg)](https://codecov.io/github/libscie/datr?branch=master)
+<p align="center">
+  <!-- Stability -->
+  <a href="https://travis-ci.org/libscie/datr">
+    <img src="https://travis-ci.org/libscie/datr.svg?branch=master"
+      alt="Build status" />
+  </a>
+  <a href="https://codecov.io/github/libscie/datr?branch=master">
+    <img src="https://codecov.io/gh/libscie/datr/branch/master/graph/badge.svg"
+      alt="Coverage" />
+  </a>
+  <!-- Made with <3 -->
+  <a>
+    <img src="https://img.shields.io/badge/made_with-🍪-e6e6e6.svg" />
+  </a>
+</p>
 
-The goal of datr is to provide R users with an easy way to interact with the [Dat](https://datproject.org) p2p infrastructure. Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms. If you are having issues, please check out the [Known Issues](#known-issues) below.
-
-## Installation
-
-You can install `datr` from GitHub with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("libscie/datr")
-```
-
-See below for [Windows](#windows), [Mac](#mac), and [Linux](#linux) specific instructions for installing Dat. `v0.1.0` will be submitted to CRAN (almost done 🏁)!
-
-### Windows
-
-Fire up `R` *with* Administrator privileges by right clicking the icon and selecting "Run as administrator"
-
-[![Run as administrator](assets/run-as-admin.png)](https://winaero.com/blog/how-to-run-an-app-as-administrator-in-windows-10/)
-
-Once the program launches, run `datr::dat_install()`. The package then initiates downloading Dat and installs it on your local machine. 
-
-Upon completion, reboot R and you can start using the package 😻 (adminstrator privileges no longer needed)
-
-### Mac
-
-```R
-devtools::install_github('libscie/datr', ref = 'install')
-datr::dat_install(os = 'macos')
-```
-
-Note that there currently is an issue out that could benefit from feedback on installation on Mac (#7).
-
-### Linux
-
-Run `datr::dat_install(os = 'linux')` from your R console. There's no need to specify which flavor of Linux you're running, but you might to need to restart your R session 🙋
+`datr` allows R users to interact with the [Dat](https://datproject.org) network. You can load, store, or share data on the Dat network, without including any intermediaries that can snoop on your content. All transfers are end-to-end encrypted.
 
 ## Example
 
-All functions that interface with the Dat network follow the semantics of `operation_dat()` (e.g., `install_dat` installs an R package from the provided Dat url). Some example code:
+![GIF of demo](https://raw.githubusercontent.com/libscie/datr/master/assets/demo.gif)
+
+or in plain text
 
 ```R
 datr::dat_install(os = 'linux')
@@ -61,25 +42,45 @@ write.csv(data.frame(x = rnorm(100, 0, 1), y = rnorm(100, 50, 23)),
 datr::sync_dat()
 ```
 
-And in GIF form (because everything is nicer in GIFs)
 
-![](assets/demo.gif)
 
-## Roadmap
+## Installation
 
-### v0.1.0
+You can install `datr` from GitHub with:
 
-- [ ] Install Dat on your machine
-- [x] Basic functionality of Dat
-- [x] Install R packages hosted on Dat
+``` r
+# install.packages("devtools")
+devtools::install_github("libscie/datr")
+```
+
+See below for [Windows](#windows), [Mac](#mac), and [Linux](#linux) specific instructions for installing Dat. `v0.1.0` will be submitted to CRAN (almost done 🏁)!
+
+### Windows
+
+Fire up `R` *with* Administrator privileges by right clicking the icon and selecting "Run as administrator"
+
+[![Run as administrator](https://raw.githubusercontent.com/libscie/datr/master/assets/run-as-admin.png)](https://winaero.com/blog/how-to-run-an-app-as-administrator-in-windows-10/)
+
+Once the program launches, run `datr::dat_install()`. The package then initiates downloading Dat and installs it on your local machine. 
+
+Upon completion, reboot R and you can start using the package 😻 (adminstrator privileges no longer needed)
+
+### Mac
+
+```R
+devtools::install_github('libscie/datr', ref = 'install')
+datr::dat_install(os = 'macos')
+```
+
+Note that there currently is an issue out that could benefit from feedback on installation on Mac (#7).
+
+### Linux
+
+Run `datr::dat_install(os = 'linux')` from your R console. There's no need to specify which flavor of Linux you're running, but you might to need to restart your R session 🙋
 
 ## Code of conduct
 
 This project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms. We welcome you with open arms if you are mindful and respectful of differences. You might not always understand another person's perspective; acknowledging that other people's feelings or perspectives are valid regardless of your understanding is prerequisite number one to being both mindful and respectful. We will not consider contributions if they are not done in a respectful manner, no matter how "genius" they might be.
-
-## Known issues
-
-* Rstudio does not like interactive console calls. Beware!
 
 ## License
 

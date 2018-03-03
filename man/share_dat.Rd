@@ -7,8 +7,6 @@
 share_dat()
 }
 \description{
-Function to start sharing the current working directory to the Dat
-network. Initializes a .dat folder with cryptographic keys. Note that
-this is a continuous function and requires the user to abort (does not
-work well with Rstudio in general).
+Function to continuously share working directory to the Dat network, until 
+aborted.
 }

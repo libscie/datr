@@ -1,9 +1,7 @@
 #' Share folder to network
 #'
-#' Function to start sharing the current working directory to the Dat
-#' network. Initializes a .dat folder with cryptographic keys. Note that
-#' this is a continuous function and requires the user to abort (does not
-#' work well with Rstudio in general).
+#' Function to continuously share working directory to the Dat network, until 
+#' aborted.
 #'
 #' @export
 
@@ -66,16 +64,11 @@ clone_dat <- function (link, dir) {
   system(sprintf('dat clone %s %s', link, dir))
 }
 
-#' Update Dat folder continuously
+#' Update Dat folder
 #'
-#' Function to keep updating a Dat folder. This function only receives
-#' updates and does not send changes back. In other words, this is what you
-#' need most often for other people's Dat links.
-#'
-#' Note that this function does not exit until you tell R to. Rstudio does
-#' not really like this kind of functionality, but from a terminal you will
-#' see more plus the way to quit.
-#'
+#' Function to continuously update a Dat folder until abort. This function only
+#' receives updates. 
+#' 
 #' @param dir Optional, path to Dat directory
 #'
 #' @return Nothing (for now)

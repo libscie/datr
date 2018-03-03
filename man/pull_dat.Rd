@@ -2,7 +2,7 @@
 % Please edit documentation in R/cli-wrapper.R
 \name{pull_dat}
 \alias{pull_dat}
-\title{Update Dat folder continuously}
+\title{Update Dat folder}
 \usage{
 pull_dat(dir = NULL)
 }
@@ -13,12 +13,6 @@ pull_dat(dir = NULL)
 Nothing (for now)
 }
 \description{
-Function to keep updating a Dat folder. This function only receives
-updates and does not send changes back. In other words, this is what you
-need most often for other people's Dat links.
-}
-\details{
-Note that this function does not exit until you tell R to. Rstudio does
-not really like this kind of functionality, but from a terminal you will
-see more plus the way to quit.
+Function to continuously update a Dat folder until abort. This function only
+receives updates.
 }

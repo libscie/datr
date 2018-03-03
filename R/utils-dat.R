@@ -33,7 +33,7 @@ verify_dat <- function (x) {
   invisible(TRUE)
 }
 
-#' Install Dat
+#' Dat install
 #' 
 #' Download the released binaries for Dat and add them to your environment. If
 #' a more recent version has been released, you can specify it as argument (we

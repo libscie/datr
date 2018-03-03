@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils-dat.R
 \name{dat_install}
 \alias{dat_install}
-\title{Install Dat}
+\title{Dat install}
 \usage{
 dat_install(os = "win", ver = "13.10.0")
 }

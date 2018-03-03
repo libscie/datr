@@ -4,19 +4,9 @@
 \name{datr}
 \alias{datr}
 \alias{datr-package}
-\title{datr: Interface with the Dat p2p network}
+\title{datr: Dat Protocol Interface}
 \description{
-The datr package provides R users with a way to interface with
-the Dat p2p network. Basic functionality includes cloning folders hosted on
-the network, sharing your own files, downloading just metadata and
-retrieving parts of datasets. Additional functionality specific to R is
-likely to be implemented in due time.
-}
-\details{
-The Dat system calls have a lot of interactive aspects to them and
-continuous synchronisation, that Rstudio does not handle well. Please
-take this into account while using the package.
-
-Suggestions for improvements or bug reports always welcome at
-https://github.com/libscie/datr
+The datr package provides R users with a way to interface with 
+the Dat p2p network. Currently, the package allows you to clone Dat archives
+from the network, share your own files, and install an R package from a Dat.
 }

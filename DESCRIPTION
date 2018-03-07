@@ -1,16 +1,14 @@
 Package: datr
-Title: Dat Protocol Interface
+Title: 'Dat' Protocol Interface
 Version: 0.1.0
 Authors@R: person("Chris", "Hartgerink", , "chris@libscie.org", c("aut", "cre"))
-Description: The datr package provides R users with a way to interface with 
-    the Dat p2p network. Currently, the package allows you to clone Dat archives
-    from the network, share your own files, and install an R package from a Dat.
+Description: Interface with the 'Dat' p2p network protocol. Clone archives
+  from the network, share your own files, and install packages from the network.
 License: GPL-3
 Depends: 
     R (>= 3.1)
 Imports: 
     devtools,
-    rjson,
 Suggests: 
     covr,
     testthat

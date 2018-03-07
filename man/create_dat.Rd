@@ -2,13 +2,19 @@
 % Please edit documentation in R/cli-wrapper.R
 \name{create_dat}
 \alias{create_dat}
-\title{Create a Dat folder in current directory}
+\title{Create Dat metadata}
 \usage{
-create_dat()
+create_dat(dir)
 }
-\value{
-Dat link
+\arguments{
+\item{dir}{Directory to create Dat.}
 }
 \description{
 Function to create a dat.json interactively, with title and description.
+}
+\examples{
+\dontrun{
+  create_dat('.')
+  create_dat('data/')
+}
 }

@@ -2,12 +2,17 @@
 % Please edit documentation in R/cli-wrapper.R
 \name{sync_dat}
 \alias{sync_dat}
-\title{Synchronize current folder with Dat network}
+\title{Synchronize with Dat network}
 \usage{
 sync_dat()
 }
 \description{
-Function to resume sharing the folder with the Dat network, if already
-created (\code{\link{create_dat}}) locally or cloned
-(\code{\link{clone_dat}}).
+Synchronize directory with the Dat network. If write access to the Dat is 
+available, this is equivalent to \code{\link{share_dat}}. If read-only 
+access is available, this is equivalent to \code{\link{pull_dat}}.
+}
+\examples{
+\dontrun{
+  sync_dat()
+}
 }

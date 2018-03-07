@@ -4,15 +4,14 @@
 \alias{pull_dat}
 \title{Update Dat folder}
 \usage{
-pull_dat(dir = NULL)
-}
-\arguments{
-\item{dir}{Optional, path to Dat directory}
-}
-\value{
-Nothing (for now)
+pull_dat()
 }
 \description{
-Function to continuously update a Dat folder until abort. This function only
-receives updates.
+Function to update working directory if it is a Dat folder. This function
+only receives updates.
+}
+\examples{
+\dontrun{
+  pull_dat()
+}
 }

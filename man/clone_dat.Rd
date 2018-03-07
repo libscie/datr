@@ -11,9 +11,6 @@ clone_dat(link, dir)
 
 \item{dir}{Directory to clone to. If non-existent, will create.}
 }
-\value{
-Nothing (for now)
-}
 \description{
 Function to clone a Dat link to the machine.
 }

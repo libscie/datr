@@ -1,42 +1,37 @@
-#' Share folder to network
-#'
-#' Function to continuously share working directory to the Dat network, until 
-#' aborted.
-#'
-#' @export
-
-share_dat <- function () {
-  if (dir.exists('.dat')) {
-    stop('Dat already initialized.')
-  }
-
-  system('dat share', wait = FALSE)
-}
-
-#' Create a Dat folder in current directory
+#' Create Dat metadata
 #'
 #' Function to create a dat.json interactively, with title and description.
 #'
-#' @return Dat link
+#' @param dir Directory to create Dat.
+#' 
 #' @export
+#' 
+#' @examples \dontrun{
+#'   create_dat('.')
+#'   create_dat('data/')
+#' }
 
-create_dat <- function () {
+create_dat <- function (dir) {
   system('dat create')
-
-  res <- rjson::fromJSON(file = './dat.json')$url
-  return(res)
 }
 
-#' Synchronize current folder with Dat network
+#' Share folder to network
 #'
-#' Function to resume sharing the folder with the Dat network, if already
-#' created (\code{\link{create_dat}}) locally or cloned
-#' (\code{\link{clone_dat}}).
+#' Share directory to the Dat network, until aborted. Requires write access 
+#' to Dat archive.
+#' 
+#' @param dir Directory to share. Defaults to working directory.
 #'
 #' @export
+#'
+#' @examples \dontrun{
+#'   share_dat('./') 
+#'   share_dat('data/') 
+#'   share_dat('materials/') 
+#' }
 
-sync_dat <- function () {
-  system('dat sync')
+share_dat <- function (dir = '.') {
+  system(sprintf('dat share %s', dir), wait = FALSE)
 }
 
 #' Clone a Dat link to directory
@@ -46,7 +41,6 @@ sync_dat <- function () {
 #' @param link Dat link, including or without versioning (always clones latest)
 #' @param dir Directory to clone to. If non-existent, will create.
 #'
-#' @return Nothing (for now)
 #' @export
 #'
 #' @examples \dontrun{
@@ -66,25 +60,36 @@ clone_dat <- function (link, dir) {
 
 #' Update Dat folder
 #'
-#' Function to continuously update a Dat folder until abort. This function only
-#' receives updates. 
-#' 
-#' @param dir Optional, path to Dat directory
+#' Function to update working directory if it is a Dat folder. This function
+#' only receives updates. 
 #'
-#' @return Nothing (for now)
 #' @export
+#' @examples \dontrun{
+#'   pull_dat()
+#' }
 
-pull_dat <- function (dir = NULL) {
-  if (is.null(dir)) {
-    system('dat pull')
-  } else {
-    system(sprintf('dat pull %s', dir))
-  }
+pull_dat <- function () {
+  system('dat pull')
 }
 
-#' Show the Dat log
+#' Synchronize with Dat network
 #'
-#' Function to show the log of the Dat folder. You can either retrieve the
+#' Synchronize directory with the Dat network. If write access to the Dat is 
+#' available, this is equivalent to \code{\link{share_dat}}. If read-only 
+#' access is available, this is equivalent to \code{\link{pull_dat}}. 
+#'
+#' @export
+#' @examples \dontrun{
+#'   sync_dat()
+#' }
+
+sync_dat <- function () {
+  system('dat sync')
+}
+
+#' Show Dat archive log
+#'
+#' Retrieve log of the Dat folder. You can either retrieve the
 #' log of a Dat link (argument \code{link}) or of a local Dat folder
 #' (argument \code{dir}). Defaults to giving the log of the working directory.
 #' If a Dat link is provided, this overrides the \code{dir} argument.
@@ -92,8 +97,12 @@ pull_dat <- function (dir = NULL) {
 #' @param link Dat link (network)
 #' @param dir Dat folder (local)
 #'
-#' @return Nothing (for now)
+#' @return Console log.
 #' @export
+#' @examples \dontrun{
+#'   log_dat()
+#'   log_dat(link = 'dat://pastedat-taravancil.hashbase.io')
+#' }
 
 log_dat <- function (link, dir = '.') {
   if (exists(x = 'link')) {
@@ -108,14 +117,15 @@ log_dat <- function (link, dir = '.') {
 
 #' Status of the Dat folder
 #'
-#' Get some information about a Dat folder, including the \code{link}, the
-#' number of files, and the current version.
+#' Get some information Dat folder in the working directory. Includes: Dat 
+#' link, the number of files, and the current version.
 #'
-#' @param dir Location of Dat folder. Defaults to working directory
-#'
-#' @return Nothing (for now)
+#' @return Console log.
 #' @export
+#' @examples \dontrun{
+#'   status_dat()
+#' }
 
-status_dat <- function (dir = '.') {
+status_dat <- function () {
   system('dat status')
 }

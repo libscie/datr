@@ -4,10 +4,12 @@
 \alias{dat_install}
 \title{Dat install}
 \usage{
-dat_install(os = "win", ver = "13.10.0")
+dat_install(os = "win", path, ver = "13.10.0")
 }
 \arguments{
 \item{os}{'win' (Windows), 'mac', or 'linux'}
+
+\item{path}{Where to install Dat}
 
 \item{ver}{Version. See \url{https://github.com/datproject/dat/releases}}
 }
@@ -18,4 +20,11 @@ NULL. Prints stdout of terminal along the way.
 Download the released binaries for Dat and add them to your environment. If
 a more recent version has been released, you can specify it as argument (we
 try to update it accordingly, but might sometimes have time off!).
+}
+\examples{
+\dontrun{
+  dat_install(os = 'win')
+  dat_install(os = 'macos')
+  dat_install(os = 'linux')
+}
 }

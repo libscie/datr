@@ -4,9 +4,19 @@
 \alias{share_dat}
 \title{Share folder to network}
 \usage{
-share_dat()
+share_dat(dir = ".")
+}
+\arguments{
+\item{dir}{Directory to share. Defaults to working directory.}
 }
 \description{
-Function to continuously share working directory to the Dat network, until 
-aborted.
+Share directory to the Dat network, until aborted. Requires write access 
+to Dat archive.
+}
+\examples{
+\dontrun{
+  share_dat('./') 
+  share_dat('data/') 
+  share_dat('materials/') 
+}
 }

@@ -4,13 +4,15 @@
 \alias{install_dat}
 \title{Install R package from Dat link}
 \usage{
-install_dat(link)
+install_dat(link, dir)
 }
 \arguments{
 \item{link}{Dat link}
+
+\item{dir}{Temporary directory to store download in.}
 }
 \value{
-Message.
+Console log.
 }
 \description{
 Directly install an R package from a Dat link.

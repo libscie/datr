@@ -2,7 +2,7 @@
 % Please edit documentation in R/cli-wrapper.R
 \name{log_dat}
 \alias{log_dat}
-\title{Show the Dat log}
+\title{Show Dat archive log}
 \usage{
 log_dat(link, dir = ".")
 }
@@ -12,11 +12,17 @@ log_dat(link, dir = ".")
 \item{dir}{Dat folder (local)}
 }
 \value{
-Nothing (for now)
+Console log.
 }
 \description{
-Function to show the log of the Dat folder. You can either retrieve the
+Retrieve log of the Dat folder. You can either retrieve the
 log of a Dat link (argument \code{link}) or of a local Dat folder
 (argument \code{dir}). Defaults to giving the log of the working directory.
 If a Dat link is provided, this overrides the \code{dir} argument.
+}
+\examples{
+\dontrun{
+  log_dat()
+  log_dat(link = 'dat://pastedat-taravancil.hashbase.io')
+}
 }

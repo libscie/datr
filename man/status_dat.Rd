@@ -4,15 +4,17 @@
 \alias{status_dat}
 \title{Status of the Dat folder}
 \usage{
-status_dat(dir = ".")
-}
-\arguments{
-\item{dir}{Location of Dat folder. Defaults to working directory}
+status_dat()
 }
 \value{
-Nothing (for now)
+Console log.
 }
 \description{
-Get some information about a Dat folder, including the \code{link}, the
-number of files, and the current version.
+Get some information Dat folder in the working directory. Includes: Dat 
+link, the number of files, and the current version.
+}
+\examples{
+\dontrun{
+  status_dat()
+}
 }

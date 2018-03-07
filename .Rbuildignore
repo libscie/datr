@@ -17,3 +17,4 @@
 ^LICENSE_CONTENT\.md$
 ^R/scratchpad\.R$
 ^\.scratchpad$
+^CRAN-RELEASE$

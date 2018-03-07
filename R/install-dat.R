@@ -3,18 +3,17 @@
 #' Directly install an R package from a Dat link.
 #'
 #' @param link Dat link
+#' @param dir Temporary directory to store download in.
 #'
-#' @return Message.
+#' @return Console log.
 #' @export
 #'
 #' @examples \dontrun{
 #'   install_dat('dat://datr-chris.hashbase.io')
 #' }
 
-install_dat <- function (link) {
-  dir <- 'tmp'
+install_dat <- function (link, dir) {
   clone_dat(link, dir)
-
   devtools::install(dir)
 
   unlink(dir, recursive = TRUE)

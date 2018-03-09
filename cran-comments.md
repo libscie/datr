@@ -6,7 +6,7 @@ This is a resubmission based on comments from March 7. I fixed:
 * Single quotes for software and packages in DESCRIPTION
 * Add more examples in documentation
 * Removed writes by default. All functions that write to local machine now require user to specify dir/path.
-First submission after a long time of lurking. Hi! 👋 
+* Complete all links in examples
 
 # Test environments
 

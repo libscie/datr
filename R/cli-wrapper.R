@@ -38,14 +38,13 @@ share_dat <- function (dir = '.') {
 #'
 #' Function to clone a Dat link to the machine.
 #'
-#' @param link Dat link, including or without versioning (always clones latest)
+#' @param link Dat link (always clones latest version now)
 #' @param dir Directory to clone to. If non-existent, will create.
 #'
 #' @export
 #'
 #' @examples \dontrun{
-#'   clone_dat(link = 'dat://a1b2c3...)
-#'   clone_dat(link = 'dat://a1b2c3...+34)
+#'   clone_dat(link = 'dat://datr-chris.hashbase.io')
 #' }
 
 clone_dat <- function (link, dir) {

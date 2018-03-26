@@ -10,9 +10,9 @@ share_dat(dir = ".")
 \item{dir}{Directory to share. Defaults to working directory.}
 }
 \description{
-Share directory to the Dat network, until aborted. Requires write access 
+Share directory to the Dat network, until aborted. Requires write access
 to Dat archive.
 }
 \examples{
-  share_dat(dir = tempdir()) 
+share_dat(dir = tempdir())
 }

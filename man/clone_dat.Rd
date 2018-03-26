@@ -15,7 +15,5 @@ clone_dat(link, dir)
 Function to clone a Dat link to the machine.
 }
 \examples{
-\dontrun{
-  clone_dat(link = 'dat://datr-chris.hashbase.io', dir = tempdir())
-}
+clone_dat(link = 'dat://datr-chris.hashbase.io', dir = tempdir())
 }

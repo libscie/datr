@@ -13,5 +13,5 @@ create_dat(dir = ".")
 Function to create a dat.json interactively, with title and description.
 }
 \examples{
-  create_dat(dir = tempdir())
+create_dat(dir = tempdir())
 }

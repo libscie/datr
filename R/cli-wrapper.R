@@ -3,30 +3,34 @@
 #' Function to create a dat.json interactively, with title and description.
 #'
 #' @param dir Directory to create Dat. Defaults to working directory.
-#' 
+#'
 #' @export
-#' 
-#' @examples 
-#'   create_dat(dir = tempdir())
+#'
+#' @examples
+#' create_dat(dir = tempdir())
 
 create_dat <- function (dir = '.') {
-  system(sprintf('dat create %s', dir))
+  if (dat_is_installed(quiet = FALSE)) {
+    system2('dat', args = c("create", dir))
+  }
 }
 
 #' Share folder to network
 #'
-#' Share directory to the Dat network, until aborted. Requires write access 
+#' Share directory to the Dat network, until aborted. Requires write access
 #' to Dat archive.
-#' 
+#'
 #' @param dir Directory to share. Defaults to working directory.
 #'
 #' @export
 #'
-#' @examples 
-#'   share_dat(dir = tempdir()) 
+#' @examples
+#' share_dat(dir = tempdir())
 
 share_dat <- function (dir = '.') {
-  system(sprintf('dat share %s', dir), wait = FALSE)
+  if (dat_is_installed(quiet = FALSE)) {
+    system2('dat', args = c('share', dir), wait = FALSE)
+  }
 }
 
 #' Clone a Dat link to directory
@@ -38,45 +42,49 @@ share_dat <- function (dir = '.') {
 #'
 #' @export
 #'
-#' @examples \dontrun{
-#'   clone_dat(link = 'dat://datr-chris.hashbase.io', dir = tempdir())
-#' }
+#' @examples
+#' clone_dat(link = 'dat://datr-chris.hashbase.io', dir = tempdir())
 
 clone_dat <- function (link, dir) {
-  if (!dir.exists(dir)) {
-    dir.create(dir)
+
+  if (dat_is_installed(quiet = FALSE)) {
+    if (!dir.exists(dir)) {
+      dir.create(dir)
+    }
+    system2('dat', args = c('clone', link, dir))
   }
-  
-  system(sprintf('dat clone %s %s', link, dir))
 }
 
 #' Update Dat folder
 #'
 #' Function to update working directory if it is a Dat folder. This function
-#' only receives updates. 
+#' only receives updates.
 #'
 #' @export
-#' @examples \dontrun{
-#'   pull_dat()
-#' }
+#' @examples
+#' pull_dat()
+
 
 pull_dat <- function () {
-  system('dat pull')
+  if (dat_is_installed(quiet = FALSE)) {
+    system2('dat', 'pull')
+  }
 }
 
 #' Synchronize with Dat network
 #'
-#' Synchronize directory with the Dat network. If write access to the Dat is 
-#' available, this is equivalent to \code{\link{share_dat}}. If read-only 
-#' access is available, this is equivalent to \code{\link{pull_dat}}. 
+#' Synchronize directory with the Dat network. If write access to the Dat is
+#' available, this is equivalent to \code{\link{share_dat}}. If read-only
+#' access is available, this is equivalent to \code{\link{pull_dat}}.
 #'
 #' @export
-#' @examples \dontrun{
-#'   sync_dat()
-#' }
+#' @examples
+#' sync_dat()
 
 sync_dat <- function () {
-  system('dat sync')
+  if (dat_is_installed()) {
+    system2('dat', 'sync')
+  }
 }
 
 #' Show Dat archive log
@@ -90,18 +98,19 @@ sync_dat <- function () {
 #'
 #' @return Console log.
 #' @export
-#' @examples \dontrun{
-#'   log_dat(path = '.')
-#'   log_dat(path = 'dat://pastedat-taravancil.hashbase.io')
-#' }
+#' @examples
+#' log_dat(path = '.')
+#' log_dat(path = 'dat://pastedat-taravancil.hashbase.io')
 
 log_dat <- function (path) {
-  system(sprintf('dat log %s', path))
+  if (dat_is_installed(quiet = FALSE)) {
+    system2('dat', args = c("log", path))
+  }
 }
 
 #' Status of the Dat folder
 #'
-#' Get some information Dat folder in the working directory. Includes: Dat 
+#' Get some information Dat folder in the working directory. Includes: Dat
 #' link, the number of files, and the current version.
 #'
 #' @return Console log.
@@ -111,5 +120,26 @@ log_dat <- function (path) {
 #' }
 
 status_dat <- function () {
-  system('dat status')
+  if (dat_is_installed(quiet = FALSE)) {
+    system2('dat', 'status')
+  }
+}
+
+#' Which version of Dat is installed?
+#'
+#' @return Dat version string (if installed)
+#' @export
+#' @examples
+#' dat_version()
+
+dat_version <- function() {
+  if (dat_is_installed(quiet = FALSE)) {
+    suppressMessages(
+      suppressWarnings(
+        system2("dat", args = "--version", stdout = TRUE, stderr = TRUE)
+      )
+    ) -> version
+    attributes(version) <- NULL
+    return(version)
+  }
 }

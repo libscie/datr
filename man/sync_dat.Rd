@@ -7,12 +7,10 @@
 sync_dat()
 }
 \description{
-Synchronize directory with the Dat network. If write access to the Dat is 
-available, this is equivalent to \code{\link{share_dat}}. If read-only 
+Synchronize directory with the Dat network. If write access to the Dat is
+available, this is equivalent to \code{\link{share_dat}}. If read-only
 access is available, this is equivalent to \code{\link{pull_dat}}.
 }
 \examples{
-\dontrun{
-  sync_dat()
-}
+sync_dat()
 }

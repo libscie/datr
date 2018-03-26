@@ -23,8 +23,9 @@ create_dat <- function (dir = '.') {
 #'
 #' @export
 #'
-#' @examples 
+#' @examples \dontrun{
 #'   share_dat(dir = tempdir()) 
+#' }
 
 share_dat <- function (dir = '.') {
   system(sprintf('dat share %s', dir), wait = FALSE)

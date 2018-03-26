@@ -14,9 +14,5 @@ Share directory to the Dat network, until aborted. Requires write access
 to Dat archive.
 }
 \examples{
-\dontrun{
-  share_dat('./') 
-  share_dat('data/') 
-  share_dat('materials/') 
-}
+  share_dat(dir = tempdir()) 
 }

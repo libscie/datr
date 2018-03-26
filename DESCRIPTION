@@ -2,8 +2,7 @@ Package: datr
 Title: 'Dat' Protocol Interface
 Version: 0.1.0
 Authors@R: person("Chris", "Hartgerink", , "chris@libscie.org", c("aut", "cre"))
-Description: Interface with the 'Dat' p2p network protocol. Clone archives
-  from the network, share your own files, and install packages from the network.
+Description: Interface with the 'Dat' p2p network protocol <https://datproject.org>. Clone archives from the network, share your own files, and install packages from the network.
 License: GPL-3
 Depends: 
     R (>= 3.1)
@@ -12,6 +11,8 @@ Imports:
 Suggests: 
     covr,
     testthat
+SystemRequirements:
+    dat (>= 13.10.0)
 ByteCompile: true
 Encoding: UTF-8
 LazyData: true

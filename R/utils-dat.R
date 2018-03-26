@@ -15,24 +15,6 @@ cmd_check <- function (x) {
   }
 }
 
-#' Verify Dat link
-#'
-#' This function verifies a Dat link with a heuristic, checking for a 64 
-#' character hash plus an optional version number. Resolving gateways such
-#' as \url{https://hashbase.io} will be implemented later.
-#'
-#' @param x Dat link to verify.
-#'
-#' @return Boolean TRUE [invisible]
-
-verify_dat <- function (x) {
-  if (!sum(grepl(x, pattern = '^(dat:/{2})\\w{64}(\\+\\d)?$')) == length(x)) {
-    stop('Supplied Dat links contain errors. Please verify input.')
-  }
-  
-  invisible(TRUE)
-}
-
 #' Dat install
 #' 
 #' Download the released binaries for Dat and add them to your environment. If
@@ -55,7 +37,7 @@ verify_dat <- function (x) {
 
 dat_install <- function (os = 'win', path, ver = '13.10.0') {
   if (!(os == 'win' || os == 'macos' || os == 'linux')) {
-    stop('Please specify operating system correctly.')
+    stop('Please specify operating system correctly (win|macos|linux).')
   }
   
   normalizedPath <- suppressWarnings(

@@ -1,12 +1,10 @@
 # Resubmission
 
-This is a resubmission based on comments from March 7. I fixed:
+This is a resubmission based on comments from March 19. Changes include:
 
-* No longer start package with "This package" or similar
-* Single quotes for software and packages in DESCRIPTION
-* Add more examples in documentation
-* Removed writes by default. All functions that write to local machine now require user to specify dir/path.
-* Complete all links in examples
+* Ensure all examples work
+* Add running examples (some did not need Internet connection after all)
+* Add reference in description to the Dat project <https://datproject.org>
 
 # Test environments
 

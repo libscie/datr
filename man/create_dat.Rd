@@ -4,17 +4,14 @@
 \alias{create_dat}
 \title{Create Dat metadata}
 \usage{
-create_dat(dir)
+create_dat(dir = ".")
 }
 \arguments{
-\item{dir}{Directory to create Dat.}
+\item{dir}{Directory to create Dat. Defaults to working directory.}
 }
 \description{
 Function to create a dat.json interactively, with title and description.
 }
 \examples{
-\dontrun{
-  create_dat('.')
-  create_dat('data/')
-}
+  create_dat(dir = tempdir())
 }

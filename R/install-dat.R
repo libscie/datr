@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#'   install_dat('dat://datr-chris.hashbase.io')
+#'   install_dat('dat://datr-chris.hashbase.io', dir = tempdir())
 #' }
 
 install_dat <- function (link, dir) {

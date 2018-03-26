@@ -4,12 +4,10 @@
 \alias{log_dat}
 \title{Show Dat archive log}
 \usage{
-log_dat(link, dir = ".")
+log_dat(path)
 }
 \arguments{
-\item{link}{Dat link (network)}
-
-\item{dir}{Dat folder (local)}
+\item{path}{Dat archive, can both be local or on the network.}
 }
 \value{
 Console log.
@@ -22,7 +20,7 @@ If a Dat link is provided, this overrides the \code{dir} argument.
 }
 \examples{
 \dontrun{
-  log_dat()
-  log_dat(link = 'dat://pastedat-taravancil.hashbase.io')
+  log_dat(path = '.')
+  log_dat(path = 'dat://pastedat-taravancil.hashbase.io')
 }
 }

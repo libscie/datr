@@ -19,6 +19,6 @@ Directly install an R package from a Dat link.
 }
 \examples{
 \dontrun{
-  install_dat('dat://datr-chris.hashbase.io')
+  install_dat('dat://datr-chris.hashbase.io', dir = tempdir())
 }
 }

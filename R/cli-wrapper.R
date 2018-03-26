@@ -2,17 +2,15 @@
 #'
 #' Function to create a dat.json interactively, with title and description.
 #'
-#' @param dir Directory to create Dat.
+#' @param dir Directory to create Dat. Defaults to working directory.
 #' 
 #' @export
 #' 
-#' @examples \dontrun{
-#'   create_dat('.')
-#'   create_dat('data/')
-#' }
+#' @examples 
+#'   create_dat(dir = tempdir())
 
-create_dat <- function (dir) {
-  system('dat create')
+create_dat <- function (dir = '.') {
+  system(sprintf('dat create %s', dir))
 }
 
 #' Share folder to network
@@ -24,11 +22,8 @@ create_dat <- function (dir) {
 #'
 #' @export
 #'
-#' @examples \dontrun{
-#'   share_dat('./') 
-#'   share_dat('data/') 
-#'   share_dat('materials/') 
-#' }
+#' @examples 
+#'   share_dat(dir = tempdir()) 
 
 share_dat <- function (dir = '.') {
   system(sprintf('dat share %s', dir), wait = FALSE)
@@ -44,7 +39,7 @@ share_dat <- function (dir = '.') {
 #' @export
 #'
 #' @examples \dontrun{
-#'   clone_dat(link = 'dat://datr-chris.hashbase.io')
+#'   clone_dat(link = 'dat://datr-chris.hashbase.io', dir = tempdir())
 #' }
 
 clone_dat <- function (link, dir) {
@@ -52,8 +47,6 @@ clone_dat <- function (link, dir) {
     dir.create(dir)
   }
   
-  verify_dat(link)
-
   system(sprintf('dat clone %s %s', link, dir))
 }
 
@@ -93,25 +86,17 @@ sync_dat <- function () {
 #' (argument \code{dir}). Defaults to giving the log of the working directory.
 #' If a Dat link is provided, this overrides the \code{dir} argument.
 #'
-#' @param link Dat link (network)
-#' @param dir Dat folder (local)
+#' @param path Dat archive, can both be local or on the network.
 #'
 #' @return Console log.
 #' @export
 #' @examples \dontrun{
-#'   log_dat()
-#'   log_dat(link = 'dat://pastedat-taravancil.hashbase.io')
+#'   log_dat(path = '.')
+#'   log_dat(path = 'dat://pastedat-taravancil.hashbase.io')
 #' }
 
-log_dat <- function (link, dir = '.') {
-  if (exists(x = 'link')) {
-    verify_dat(link)
-    cmd <- sprintf('dat log %s', link)
-  } else {
-    cmd <- sprintf('dat log %s', dir)
-  }
-
-  system(cmd)
+log_dat <- function (path) {
+  system(sprintf('dat log %s', path))
 }
 
 #' Status of the Dat folder

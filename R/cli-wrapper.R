@@ -6,8 +6,9 @@
 #' 
 #' @export
 #' 
-#' @examples 
+#' @examples \dontrun{
 #'   create_dat(dir = tempdir())
+#' }
 
 create_dat <- function (dir = '.') {
   system(sprintf('dat create %s', dir))

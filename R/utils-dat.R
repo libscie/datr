@@ -76,7 +76,7 @@ dat_install <- function (os = 'win', path, ver = '13.10.0') {
 }
 
 # tests whether we can find dat
-dat_is_installed <- function(quiet=TRUE) {
+dat_is_installed <- function(quiet = TRUE) {
 
   # try to get the dat version number since that's more robust than
   # just executing it or trying to find the file since it means both

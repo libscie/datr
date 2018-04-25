@@ -19,8 +19,6 @@ log of a Dat link (argument \code{link}) or of a local Dat folder
 If a Dat link is provided, this overrides the \code{dir} argument.
 }
 \examples{
-\dontrun{
-  log_dat(path = '.')
-  log_dat(path = 'dat://pastedat-taravancil.hashbase.io')
-}
+log_dat(path = '.')
+log_dat(path = 'dat://pastedat-taravancil.hashbase.io')
 }

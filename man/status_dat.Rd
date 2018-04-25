@@ -10,7 +10,7 @@ status_dat()
 Console log.
 }
 \description{
-Get some information Dat folder in the working directory. Includes: Dat 
+Get some information Dat folder in the working directory. Includes: Dat
 link, the number of files, and the current version.
 }
 \examples{

@@ -11,7 +11,5 @@ Function to update working directory if it is a Dat folder. This function
 only receives updates.
 }
 \examples{
-\dontrun{
-  pull_dat()
-}
+pull_dat()
 }

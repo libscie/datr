@@ -21,6 +21,10 @@ Download the released binaries for Dat and add them to your environment. If
 a more recent version has been released, you can specify it as argument (we
 try to update it accordingly, but might sometimes have time off!).
 }
+\note{
+The system `PATH` will be modified. On Linux-ish systems, \code{~/.profile}
+      will also be modified.
+}
 \examples{
 \dontrun{
   dat_install(os = 'win')

@@ -14,6 +14,9 @@
   <a>
     <img src="https://img.shields.io/badge/made_with-🍪-e6e6e6.svg" />
   </a>
+  <a href='https://cran.r-project.org/package=datr'>
+    <img src='https://www.r-pkg.org/badges/version/datr' alt='CRAN badge'/>
+  </a>
 </p>
 
 `datr` allows R users to interact with the [Dat](https://datproject.org) network. You can load, store, or share data on the Dat network, without including any intermediaries that can snoop on your content. All transfers are end-to-end encrypted.

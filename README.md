@@ -1,5 +1,5 @@
 <div align="center"><img src="https://raw.githubusercontent.com/libscie/datr/master/assets/datr-data-logo.svg.png" width="33%" /></div>
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 <p align="center">
   <!-- Stability -->
@@ -96,7 +96,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://chjh.nl"><img src="https://avatars0.githubusercontent.com/u/2946344?v=4" width="100px;" alt="Chris Hartgerink"/><br /><sub><b>Chris Hartgerink</b></sub></a><br /><a href="#maintenance-chartgerink" title="Maintenance">🚧</a> <a href="https://github.com/libscie/datr/commits?author=chartgerink" title="Code">💻</a> <a href="#design-chartgerink" title="Design">🎨</a></td></tr></table>
+<table><tr><td align="center"><a href="https://chjh.nl"><img src="https://avatars0.githubusercontent.com/u/2946344?v=4" width="100px;" alt="Chris Hartgerink"/><br /><sub><b>Chris Hartgerink</b></sub></a><br /><a href="#maintenance-chartgerink" title="Maintenance">🚧</a> <a href="https://github.com/libscie/datr/commits?author=chartgerink" title="Code">💻</a> <a href="#design-chartgerink" title="Design">🎨</a></td><td align="center"><a href="http://rud.is/b"><img src="https://avatars2.githubusercontent.com/u/509878?v=4" width="100px;" alt="boB Rudis"/><br /><sub><b>boB Rudis</b></sub></a><br /><a href="https://github.com/libscie/datr/commits?author=hrbrmstr" title="Code">💻</a></td></tr></table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 

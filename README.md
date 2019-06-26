@@ -1,4 +1,5 @@
 <div align="center"><img src="https://raw.githubusercontent.com/libscie/datr/master/assets/datr-data-logo.svg.png" width="33%" /></div>
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 <p align="center">

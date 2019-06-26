@@ -18,3 +18,4 @@
 ^R/scratchpad\.R$
 ^\.scratchpad$
 ^CRAN-RELEASE$
+.all-contributorsrc

@@ -109,3 +109,13 @@ dat_is_installed <- function(quiet = TRUE) {
   return(found)
 
 }
+
+try_require <- function(package, fun) {
+  if (requireNamespace(package, quietly = TRUE)) {
+    library(package, character.only = TRUE)
+    return(invisible())
+  }
+
+  stop("Package `", package, "` required for `", fun , "`.\n",
+    "Please install and try again.", call. = FALSE)
+}

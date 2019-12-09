@@ -13,9 +13,10 @@
 #' }
 
 install_dat <- function (link, dir) {
+  try_require('devtools', 'install')
   clone_dat(link, dir)
-  devtools::install(dir)
 
+  install(dir)
   unlink(dir, recursive = TRUE)
 
   message('Successfully installed package from Dat network')

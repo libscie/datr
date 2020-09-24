@@ -1,25 +1,9 @@
-<div align="center"><img src="https://raw.githubusercontent.com/libscie/datr/master/assets/datr-data-logo.svg.png" width="33%" /></div>
+# `datr` <img src="https://raw.githubusercontent.com/libscie/datr/master/assets/datr-data-logo.svg.png" width=64 align="right"/>
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
-
-<p align="center">
-  <!-- Stability -->
-  <a href="https://travis-ci.org/libscie/datr">
-    <img src="https://travis-ci.org/libscie/datr.svg?branch=master"
-      alt="Build status" />
-  </a>
-  <a href="https://codecov.io/github/libscie/datr?branch=master">
-    <img src="https://codecov.io/gh/libscie/datr/branch/master/graph/badge.svg"
-      alt="Coverage" />
-  </a>
-  <!-- Made with <3 -->
-  <a>
-    <img src="https://img.shields.io/badge/made_with-🍪-e6e6e6.svg" />
-  </a>
-  <a href='https://cran.r-project.org/package=datr'>
-    <img src='https://www.r-pkg.org/badges/version/datr' alt='CRAN badge'/>
-  </a>
-</p>
+[![CRAN
+status](https://www.r-pkg.org/badges/version/retractcheck)](https://cran.r-project.org/package=retractcheck)
+[![CRAN\_Downloads\_Total](http://cranlogs.r-pkg.org/badges/grand-total/retractcheck?color=brightgreen)](https://cran.r-project.org/package=retractcheck)
 
 `datr` allows R users to interact with the [Dat](https://datproject.org) network. You can load, store, or share data on the Dat network, without including any intermediaries that can snoop on your content. All transfers are end-to-end encrypted.
 

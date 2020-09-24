@@ -7,6 +7,8 @@ status](https://www.r-pkg.org/badges/version/retractcheck)](https://cran.r-proje
 
 `datr` allows R users to interact with the [Dat](https://datproject.org) network. You can load, store, or share data on the Dat network, without including any intermediaries that can snoop on your content. All transfers are end-to-end encrypted.
 
+**THIS PACKAGE IS NO LONGER MAINTAINED.** [Dat has been replaced by the Hypercore protocol.](https://blog.datproject.org/2020/05/15/dat-protocol-renamed-hypercore-protocol/)
+
 ## Example
 
 ![GIF of demo](https://raw.githubusercontent.com/libscie/datr/master/assets/demo.gif)
